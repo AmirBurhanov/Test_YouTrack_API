@@ -2,15 +2,18 @@ package utils;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
+
+import static io.restassured.RestAssured.basePath;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import org.testng.Reporter;
 
 public class TestConfig {
+
   private static final String CONFIG_FILE = "src/test/resources/config.properties";
   private static Properties properties = new Properties();
-  private static RequestSpecification requestSpec;
 
   static {
     loadProperties();
@@ -19,9 +22,7 @@ public class TestConfig {
   private static void loadProperties() {
     try (FileInputStream fis = new FileInputStream(CONFIG_FILE)) {
       properties.load(fis);
-      Reporter.log("Конфигурация загружена из " + CONFIG_FILE, true);
     } catch (IOException e) {
-      String error = "Ошибка загрузки конфигурации: " + e.getMessage();
       Reporter.log(error, true);
       throw new RuntimeException(error, e);
     }
@@ -37,5 +38,17 @@ public class TestConfig {
 
   public static String getApiToken() {
     return properties.getProperty("api.token");
+  }
+
+  public static String getBasePath() {
+    return properties.getProperty("base.path");
+  }
+
+  public static String oauthRedirect() {
+    return properties.getProperty("oauth.redirect.uri");
+  }
+
+  public static String getFullBaseUrl() {
+    return getBaseUrl() + getBasePath();
   }
 }

@@ -14,7 +14,5 @@ public class BaseTest {
     spec = TestConfig.getRequestSpec();
 
     RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-
-    RestAssured.basePath = "/api";
   }
 }
