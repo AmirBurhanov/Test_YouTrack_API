@@ -3,7 +3,7 @@ package base;
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeMethod;
-import utils.TestConfig;
+import specs.SpecRequest;
 
 public class BaseTest {
 
@@ -11,8 +11,7 @@ public class BaseTest {
 
   @BeforeMethod
   public void setup() {
-    spec = TestConfig.getRequestSpec();
-
+    spec = SpecRequest.getRequestSpec();
     RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
   }
 }
