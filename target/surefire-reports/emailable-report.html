@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="8">YouTrackTests</th></tr>
+<tr><td><a href="#t0">PositiveTests</a></td><td class="num">6</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">2 475</td><td></td><td></td></tr>
+<tr class="stripe"><td><a href="#t1">NegativeTests</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">147</td><td></td><td></td></tr>
+<tr><th>Total</th><th class="num">11</th><th class="num">0</th><th class="num">0</th><th class="num attn">2</th><th class="num">2 622</th><th colspan="2"></th></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">YouTrackTests</th></tr></tbody><tbody id="t0"><tr><th colspan="4">PositiveTests &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">positive.AddCommentToIssue</td><td><a href="#m0">addCommentToIssue</a></td><td rowspan="1">1773132875523</td><td rowspan="1">1125</td></tr><tr class="failedodd"><td rowspan="1">positive.UpdateIssueDescription</td><td><a href="#m1">updateIssueDescription</a></td><td rowspan="1">1773132876653</td><td rowspan="1">241</td></tr><tr><th colspan="4">PositiveTests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">positive.CreateIssueTest</td><td><a href="#m2">createIssueSuccessfully</a></td><td rowspan="1">1773132875523</td><td rowspan="1">1514</td></tr><tr class="passedodd"><td rowspan="2">positive.FilterIssuesTest</td><td><a href="#m3">getAllIssuesForProject</a></td><td rowspan="1">1773132875523</td><td rowspan="1">1556</td></tr><tr class="passedodd"><td><a href="#m4">searchIssuesByText</a></td><td rowspan="1">1773132876637</td><td rowspan="1">260</td></tr><tr class="passedeven"><td rowspan="3">positive.GetExistingIssueTest</td><td><a href="#m5">getExistingIssue</a></td><td rowspan="1">1773132875523</td><td rowspan="1">1930</td></tr><tr class="passedeven"><td><a href="#m6">getIssueByReadableId</a></td><td rowspan="1">1773132875523</td><td rowspan="1">1924</td></tr><tr class="passedeven"><td><a href="#m7">getNonExistingIssue</a></td><td rowspan="1">1773132875523</td><td rowspan="1">1108</td></tr></tbody>
+<tbody id="t1"><tr><th colspan="4">NegativeTests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">negative.CreateIssueInNonExistentProjectTest</td><td><a href="#m8">createIssueInNonExistentProject</a></td><td rowspan="1">1773132877521</td><td rowspan="1">84</td></tr><tr class="passedodd"><td rowspan="1">negative.CreateIssueNegativeTest</td><td><a href="#m9">createIssueWithoutSummary</a></td><td rowspan="1">1773132877518</td><td rowspan="1">143</td></tr><tr class="passedeven"><td rowspan="1">negative.CreateIssueWithInvalidTokenTest</td><td><a href="#m10">createIssueWithInvalidToken</a></td><td rowspan="1">1773132877519</td><td rowspan="1">92</td></tr><tr class="passedodd"><td rowspan="1">negative.CreateIssueWithoutAuthTest</td><td><a href="#m11">createIssueWithoutAuth</a></td><td rowspan="1">1773132877518</td><td rowspan="1">83</td></tr><tr class="passedeven"><td rowspan="1">negative.GetIssueNegativeTest</td><td><a href="#m12">getNonExistingIssue</a></td><td rowspan="1">1773132877529</td><td rowspan="1">84</td></tr></tbody>
+</table>
+<h2>PositiveTests</h2><h3 id="m0">positive.AddCommentToIssue#addCommentToIssue</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [201] but found [404]
+	at positive.AddCommentToIssue.addCommentToIssue(AddCommentToIssue.java:23)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 17 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">positive.UpdateIssueDescription#updateIssueDescription</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: 1 expectation failed.
+Expected status code &lt;200&gt; but was &lt;404&gt;.
+
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:344)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:516)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:344)
+	at io.restassured.internal.ResponseSpecificationImpl.validateResponseIfRequired(ResponseSpecificationImpl.groovy:714)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:344)
+	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:139)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:344)
+	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:147)
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
+	at positive.UpdateIssueDescription.updateIssueDescription(UpdateIssueDescription.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 10 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">positive.CreateIssueTest#createIssueSuccessfully</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">positive.FilterIssuesTest#getAllIssuesForProject</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">Найдено 86 задач</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">positive.FilterIssuesTest#searchIssuesByText</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">Найдено задач по запросу 'Test': 86</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">positive.GetExistingIssueTest#getExistingIssue</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">Создана тестовая задача: null<br/>✓ Успешно получена задача<br/>  ID: 3-161<br/>  Readable ID: DEMO-160<br/>  Summary: Test Issue for Get Test 1773132875525</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">positive.GetExistingIssueTest#getIssueByReadableId</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">✓ Успешно получена задача по readable ID: DEMO-161</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">positive.GetExistingIssueTest#getNonExistingIssue</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">✓ Корректная ошибка 404 при запросе несуществующей задачи</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>NegativeTests</h2><h3 id="m8">negative.CreateIssueInNonExistentProjectTest#createIssueInNonExistentProject</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">✓ Негативный тест: создание задачи в несуществующем проекте -> 400</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">negative.CreateIssueNegativeTest#createIssueWithoutSummary</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">Тест: создание задачи без summary завершен</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m10">negative.CreateIssueWithInvalidTokenTest#createIssueWithInvalidToken</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">✓ Негативный тест: создание задачи с неверным токеном -> 401</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m11">negative.CreateIssueWithoutAuthTest#createIssueWithoutAuth</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">✓ Негативный тест: создание задачи без авторизации -> 401</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m12">negative.GetIssueNegativeTest#getNonExistingIssue</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">Attempted to retrieve non-existing issue ID: 0-0<br/>Received status code: 404</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>
