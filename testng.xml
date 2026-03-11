@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="YouTrackTests" parallel="methods" thread-count="6">
+  <test name="PositiveTests">
+    <packages>
+      <package name="positive.*" />
+    </packages>
+  </test>
+  <test name="NegativeTests">
+    <packages>
+      <package name="negative.*" />
+    </packages>
+  </test>
+</suite>
