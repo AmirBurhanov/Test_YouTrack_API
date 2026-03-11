@@ -51,4 +51,24 @@ public class TestConfig {
   public static String getFullBaseUrl() {
     return getBaseUrl() + getBasePath();
   }
+
+  public static String getIssuesEndpoint() {
+    return properties.getProperty("endpoint.issues", "/issues");
+  }
+
+  public static String getIssueByIdEndpoint() {
+    return properties.getProperty("endpoint.issue.by.id", "/issues/{id}");
+  }
+
+  public static String getIssueCommentsEndpoint() {
+    return properties.getProperty("endpoint.issue.comments", "/issues/{id}/comments");
+  }
+
+  public static String getIssueCommentsEndpoint(String issueId) {
+    return getIssueCommentsEndpoint().replace("{id}", issueId);
+  }
+
+  public static String getIssueByIdEndpoint(String issueId) {
+    return getIssueByIdEndpoint().replace("{id}", issueId);
+  }
 }
