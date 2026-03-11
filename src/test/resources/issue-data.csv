@@ -1,0 +1,4 @@
+summary,description,expectedStatus
+Valid Issue 1,Normal description,200
+Valid Issue 2,Another description,200
+,Missing summary,400
