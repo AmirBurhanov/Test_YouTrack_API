@@ -27,21 +27,6 @@ public class TestConfig {
     }
   }
 
-  public static RequestSpecification getRequestSpec() {
-    if (requestSpec == null) {
-      requestSpec = new RequestSpecBuilder()
-              .setBaseUri(properties.getProperty("base.url"))
-              .setBasePath("/api")
-              .addHeader("Authorization", "Bearer " + properties.getProperty("api.token"))
-              .setContentType("application/json")
-              .build();
-
-      Reporter.log(
-          "RequestSpecification создана для URL: " + properties.getProperty("base.url"), true);
-    }
-    return requestSpec;
-  }
-
   public static String getProjectId() {
     return properties.getProperty("project.id", "TEST");
   }
