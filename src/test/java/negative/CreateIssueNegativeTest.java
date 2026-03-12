@@ -5,6 +5,8 @@ import dto.request.CreateIssueRequest;
 import io.restassured.RestAssured;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
+import specs.SpecRequest;
+import specs.SpecRespons;
 import utils.TestConfig;
 
 public class CreateIssueNegativeTest extends BaseTest {
@@ -17,14 +19,13 @@ public class CreateIssueNegativeTest extends BaseTest {
         TestConfig.getProjectId());
 
     RestAssured.given()
-        .spec(spec)
+        .spec(SpecRequest.getRequestSpec())
         .body(request)
         .when()
-        .post("/issues")
+        .post(TestConfig.getIssuesEndpoint())
         .then()
-        .statusCode(400)
-        .log().all();
+        .spec(SpecRespons.badRequest());
 
-    Reporter.log("Тест: создание задачи без summary завершен", true);
+    Reporter.log("Проверено создание задачи без summary", true);
   }
 }

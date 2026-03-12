@@ -3,9 +3,8 @@ package specs;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.ResponseSpecification;
-import org.hamcrest.Matchers;
 
-public class SpecResponse {
+public class SpecRespons {
 
   private static ResponseSpecification successResponseSpec;
   private static ResponseSpecification createdResponseSpec;
@@ -50,9 +49,9 @@ public class SpecResponse {
     return notFoundResponseSpec;
   }
 
-  public static ResponseSpecification status(int statusCode) {
+  public static ResponseSpecification unauthorized() {
     return new ResponseSpecBuilder()
-        .expectStatusCode(statusCode)
+        .expectStatusCode(401)
         .build();
   }
 }

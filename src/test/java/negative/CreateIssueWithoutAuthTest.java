@@ -5,34 +5,28 @@ import dto.request.CreateIssueRequest;
 import io.restassured.RestAssured;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
+import specs.SpecRespons;
 import utils.TestConfig;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 
 public class CreateIssueWithoutAuthTest extends BaseTest {
 
-    @Test(description = "Негативный тест: создание задачи без авторизации")
-    public void createIssueWithoutAuth() {
-        CreateIssueRequest request = new CreateIssueRequest(
-                "Task without auth",
-                "Description",
-                TestConfig.getProjectId()
-        );
+  @Test(description = "Негативный тест: создание задачи без авторизации")
+  public void createIssueWithoutAuth() {
+    CreateIssueRequest request = new CreateIssueRequest(
+        "Task without auth",
+        "Description",
+        TestConfig.getProjectId());
 
-        int statusCode = RestAssured
-                .given()
-                .baseUri(TestConfig.getBaseUrl())
-                .basePath("/api")
-                .header("Content-Type", "application/json")
-                .body(request)
-                .when()
-                .post("/issues")
-                .then()
-                .extract()
-                .statusCode();
+    RestAssured.given()
+        .baseUri(TestConfig.getBaseUrl())
+        .basePath(TestConfig.getBasePath())
+        .header("Content-Type", "application/json")
+        .body(request)
+        .when()
+        .post(TestConfig.getIssuesEndpoint())
+        .then()
+        .spec(SpecRespons.unauthorized());
 
-        assertThat("Ожидался 401 Unauthorized", statusCode, equalTo(401));
-        Reporter.log("✓ Негативный тест: создание задачи без авторизации -> " + statusCode, true);
-    }
+    Reporter.log("✓ Проверено создание задачи без авторизации", true);
+  }
 }

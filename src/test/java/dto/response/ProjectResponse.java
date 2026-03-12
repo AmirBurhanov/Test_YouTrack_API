@@ -1,6 +1,6 @@
 package dto.response;
 
-public static class ProjectResponse {
+public class ProjectResponse {
   private String id;
   private String name;
   private String shortName;

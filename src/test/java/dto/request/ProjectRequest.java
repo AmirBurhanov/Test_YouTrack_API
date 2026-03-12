@@ -1,9 +1,9 @@
 package dto.request;
 
-public static class ProjectRequest {
+public class ProjectRequest {
   private String id;
 
-  public Project(String id) {
+  public ProjectRequest(String id) {
     this.id = id;
   }
 

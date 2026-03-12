@@ -2,9 +2,6 @@ package utils;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
-
-import static io.restassured.RestAssured.basePath;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -20,13 +17,15 @@ public class TestConfig {
   }
 
   private static void loadProperties() {
-    try (FileInputStream fis = new FileInputStream(CONFIG_FILE)) {
-      properties.load(fis);
-    } catch (IOException e) {
-      Reporter.log(error, true);
-      throw new RuntimeException(error, e);
+        try (FileInputStream fis = new FileInputStream(CONFIG_FILE)) {
+            properties.load(fis);
+            Reporter.log("Конфигурация загружена из " + CONFIG_FILE, true);
+        } catch (IOException e) {
+            String errorMsg = "Ошибка загрузки конфигурации:" + e.getMessage();
+            Reporter.log(errorMsg, true);
+            throw new RuntimeException(errorMsg, e);
+        }
     }
-  }
 
   public static String getProjectId() {
     return properties.getProperty("project.id", "TEST");

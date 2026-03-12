@@ -4,12 +4,12 @@ public class CreateIssueRequest {
 
   private String summary;
   private String description;
-  private Project project;
+  private ProjectRequest project;
 
   public CreateIssueRequest(String summary, String description, String projectId) {
     this.summary = summary;
     this.description = description;
-    this.project = new Project(projectId);
+    this.project = new ProjectRequest(projectId);
 
   }
 
@@ -26,7 +26,7 @@ public class CreateIssueRequest {
     return description;
   }
 
-  public Project getProject() {
+  public ProjectRequest getProject() {
     return project;
   }
 }

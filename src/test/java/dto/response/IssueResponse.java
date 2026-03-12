@@ -13,7 +13,7 @@ public class IssueResponse {
 
   private String summary;
   private String description;
-  private Project project;
+  private ProjectResponse project;
 
   public String getId() {
     return id;
@@ -47,11 +47,11 @@ public class IssueResponse {
     this.description = description;
   }
 
-  public Project getProject() {
+  public ProjectResponse getProject() {
     return project;
   }
 
-  public void setProject(Project project) {
+  public void setProject(ProjectResponse project) {
     this.project = project;
   }
 }
