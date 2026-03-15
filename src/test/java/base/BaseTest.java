@@ -16,6 +16,5 @@ public class BaseTest {
   static {
     SPEC = SpecRequest.getRequestSpec();
     UNAUTHORIZED_SPEC = SpecRequest.getUnauthorizedSpec();
-    System.out.println("✅ Static auth initialized");
   }
 }

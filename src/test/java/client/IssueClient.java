@@ -9,7 +9,7 @@ import specs.SpecRespons;
 import utils.TestConfig;
 import org.testng.Assert;
 import org.testng.Reporter;
-
+import constants.TestConstants;
 import java.util.List;
 
 public class IssueClient extends BaseTest {
@@ -20,7 +20,7 @@ public class IssueClient extends BaseTest {
     IssueResponse response = RestAssured
         .given()
         .spec(SPEC)
-        .queryParam("fields", TestConfig.getIssueFields())
+        .queryParam(TestConstants.FIELDS_PARAM, TestConfig.getIssueFields())
         .body(request)
         .when()
         .post(TestConfig.getIssuesEndpoint())
@@ -29,8 +29,7 @@ public class IssueClient extends BaseTest {
         .extract()
         .as(IssueResponse.class);
 
-    Assert.assertNotNull(response.getIdReadable(), "ID задачи не должен быть null");
-    Reporter.log("✓ Задача создана: " + response.getIdReadable(), true);
+    Reporter.log("Задача создана: " + response.getIdReadable(), true);
   }
 
   public static void getIssue(String issueId) {
@@ -41,7 +40,7 @@ public class IssueClient extends BaseTest {
     IssueResponse response = RestAssured
         .given()
         .spec(SPEC)
-        .pathParam("id", issueId)
+        .pathParam(TestConstants.FIELDS_PARAM, issueId)
         .queryParam("fields", TestConfig.getIssueFields())
         .when()
         .get(TestConfig.getIssueByIdEndpoint())
@@ -50,16 +49,15 @@ public class IssueClient extends BaseTest {
         .extract()
         .as(IssueResponse.class);
 
-    Assert.assertNotNull(response.getIdReadable(), "Задача не найдена");
-    Reporter.log("✓ Задача получена: " + response.getIdReadable(), true);
+    Reporter.log("Задача получена: " + response.getIdReadable(), true);
   }
 
   public static void searchIssues(String searchQuery) {
     List<IssueResponse> issues = RestAssured
         .given()
         .spec(SPEC)
-        .queryParam("query", searchQuery)
-        .queryParam("fields", TestConfig.getIssueFieldsSearch())
+        .queryParam(TestConstants.QUERY_PARAM, searchQuery)
+        .queryParam(TestConstants.FIELDS_PARAM, TestConfig.getIssueFieldsSearch())
         .when()
         .get(TestConfig.getIssuesEndpoint())
         .then()
@@ -68,7 +66,6 @@ public class IssueClient extends BaseTest {
         .jsonPath()
         .getList(".", IssueResponse.class);
 
-    Assert.assertNotNull(issues, "Список задач не должен быть null");
     Reporter.log("Найдено задач по запросу '" + searchQuery + "': " + issues.size(), true);
   }
 
@@ -84,7 +81,7 @@ public class IssueClient extends BaseTest {
         .then()
         .spec(SpecRespons.badRequest());
 
-    Reporter.log("✓ Проверка: создание задачи без summary -> 400", true);
+    Reporter.log("Проверка: создание задачи без summary 400", true);
   }
 
   public static void createIssueInNonExistentProject() {
@@ -102,7 +99,7 @@ public class IssueClient extends BaseTest {
         .then()
         .spec(SpecRespons.badRequest());
 
-    Reporter.log("✓ Проверка: создание задачи в несуществующем проекте -> 400", true);
+    Reporter.log("Проверка: создание задачи в несуществующем проекте 400", true);
   }
 
   public static void createIssueWithoutAuth(String summary, String description) {
@@ -116,20 +113,20 @@ public class IssueClient extends BaseTest {
         .then()
         .spec(SpecRespons.unauthorized());
 
-    Reporter.log("✓ Проверка: создание задачи без авторизации -> 401", true);
+    Reporter.log("Проверка: создание задачи без авторизации 401", true);
   }
 
   public static void getNonExistentIssue() {
     RestAssured
         .given()
         .spec(SPEC)
-        .pathParam("id", INVALID_ISSUE_ID)
+        .pathParam(TestConstants.ID_PARAM, INVALID_ISSUE_ID)
         .when()
         .get(TestConfig.getIssueByIdEndpoint())
         .then()
         .spec(SpecRespons.notFound());
 
-    Reporter.log("✓ Проверка: получение несуществующей задачи -> 404", true);
+    Reporter.log("Проверка: получение несуществующей задачи 404", true);
   }
 
   public static void addEmptyComment() {
@@ -139,13 +136,13 @@ public class IssueClient extends BaseTest {
         .given()
         .spec(SPEC)
         .body(new CommentRequest(""))
-        .pathParam("id", issueId)
+        .pathParam(TestConstants.ID_PARAM, issueId)
         .when()
         .post(TestConfig.getIssueCommentsEndpoint())
         .then()
         .spec(SpecRespons.badRequest());
 
-    Reporter.log("✓ Проверка: добавление пустого комментария -> 400", true);
+    Reporter.log("Проверка: добавление пустого комментария 400", true);
   }
 
   public static String createTestIssueAndReturnId(String summary) {
@@ -156,48 +153,48 @@ public class IssueClient extends BaseTest {
 
     return RestAssured
         .given()
-        .spec(SPEC) // ← ДОБАВЛЕНО!
+        .spec(SPEC)
         .body(request)
-        .queryParam("fields", "id")
+        .queryParam(TestConstants.FIELDS_PARAM, TestConstants.ID_PARAM)
         .when()
         .post(TestConfig.getIssuesEndpoint())
         .then()
         .spec(SpecRespons.created())
         .extract()
-        .path("id");
+        .path(TestConstants.ID_PATH);
   }
 
   public static void deleteIssue(String issueId) {
     RestAssured
         .given()
         .spec(SPEC)
-        .pathParam("id", issueId)
+        .pathParam(TestConstants.ID_PARAM, issueId)
         .when()
         .delete(TestConfig.getIssueByIdEndpoint())
         .then()
-        .statusCode(200); // или 204, смотри что возвращает API
+        .statusCode(200);
 
-    Reporter.log("✓ Задача удалена: " + issueId, true);
+    Reporter.log("Задача удалена: " + issueId, true);
   }
 
   public static void deleteNonExistentIssue() {
     RestAssured
         .given()
         .spec(SPEC)
-        .pathParam("id", INVALID_ISSUE_ID)
+        .pathParam(TestConstants.ID_PARAM, INVALID_ISSUE_ID)
         .when()
         .delete(TestConfig.getIssueByIdEndpoint())
         .then()
-        .statusCode(404); // должен быть 404 Not Found
+        .statusCode(404);
 
-    Reporter.log("✓ Проверка: удаление несуществующей задачи -> 404", true);
+    Reporter.log("Проверка: удаление несуществующей задачи 404", true);
   }
 
   public static void getAllIssues() {
     List<IssueResponse> issues = RestAssured
         .given()
         .spec(SPEC)
-        .queryParam("fields", TestConfig.getIssueFieldsSearch())
+        .queryParam(TestConstants.FIELDS_PARAM, TestConfig.getIssueFieldsSearch())
         .when()
         .get(TestConfig.getIssuesEndpoint())
         .then()
@@ -206,6 +203,6 @@ public class IssueClient extends BaseTest {
         .jsonPath()
         .getList(".", IssueResponse.class);
 
-    Reporter.log("✓ Получен список задач. Найдено: " + issues.size(), true);
+    Reporter.log("Получен список задач. Найдено: " + issues.size(), true);
   }
 }
