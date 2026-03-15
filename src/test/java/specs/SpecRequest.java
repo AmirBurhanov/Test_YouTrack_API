@@ -7,10 +7,8 @@ import utils.TestConfig;
 
 public class SpecRequest {
 
-  private static final RequestSpecification REQUEST_SPEC;
-
-  static {
-    REQUEST_SPEC = new RequestSpecBuilder()
+  public static RequestSpecification getRequestSpec() {
+    return new RequestSpecBuilder()
         .setBaseUri(TestConfig.getBaseUrl())
         .setBasePath(TestConfig.getBasePath())
         .addHeader("Authorization", "Bearer " + TestConfig.getApiToken())
@@ -18,7 +16,11 @@ public class SpecRequest {
         .build();
   }
 
-  public static RequestSpecification getRequestSpec() {
-    return REQUEST_SPEC;
+  public static RequestSpecification getUnauthorizedSpec() {
+    return new RequestSpecBuilder()
+        .setBaseUri(TestConfig.getBaseUrl())
+        .setBasePath(TestConfig.getBasePath())
+        .setContentType(ContentType.JSON)
+        .build();
   }
 }

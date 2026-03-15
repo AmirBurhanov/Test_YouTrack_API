@@ -24,7 +24,7 @@ public class SpecRespons {
   public static ResponseSpecification created() {
     if (createdResponseSpec == null) {
       createdResponseSpec = new ResponseSpecBuilder()
-          .expectStatusCode(201)
+          .expectStatusCode(200)
           .expectContentType(ContentType.JSON)
           .build();
     }

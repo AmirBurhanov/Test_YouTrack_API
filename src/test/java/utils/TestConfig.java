@@ -17,15 +17,15 @@ public class TestConfig {
   }
 
   private static void loadProperties() {
-        try (FileInputStream fis = new FileInputStream(CONFIG_FILE)) {
-            properties.load(fis);
-            Reporter.log("Конфигурация загружена из " + CONFIG_FILE, true);
-        } catch (IOException e) {
-            String errorMsg = "Ошибка загрузки конфигурации:" + e.getMessage();
-            Reporter.log(errorMsg, true);
-            throw new RuntimeException(errorMsg, e);
-        }
+    try (FileInputStream fis = new FileInputStream(CONFIG_FILE)) {
+      properties.load(fis);
+      Reporter.log("Конфигурация загружена из " + CONFIG_FILE, true);
+    } catch (IOException e) {
+      String errorMsg = "Ошибка загрузки конфигурации:" + e.getMessage();
+      Reporter.log(errorMsg, true);
+      throw new RuntimeException(errorMsg, e);
     }
+  }
 
   public static String getProjectId() {
     return properties.getProperty("project.id", "TEST");
@@ -69,5 +69,17 @@ public class TestConfig {
 
   public static String getIssueByIdEndpoint(String issueId) {
     return getIssueByIdEndpoint().replace("{id}", issueId);
+  }
+
+  public static String getIssueFields() {
+    return properties.getProperty("issue.fields", "id,idReadable,summary,description");
+  }
+
+  public static String getIssueFieldsSearch() {
+    return properties.getProperty("issue.fields.search", "id,idReadable,summary");
+  }
+
+  public static String getCommentFields() {
+    return properties.getProperty("comment.fields", "id,text,author(login)");
   }
 }
