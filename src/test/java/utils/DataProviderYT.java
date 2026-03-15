@@ -23,7 +23,7 @@ public class DataProviderYT {
     List<Object[]> testData = new ArrayList<>();
 
     try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-      br.readLine(); // пропускаем заголовок
+      br.readLine();
 
       String line;
       while ((line = br.readLine()) != null) {
