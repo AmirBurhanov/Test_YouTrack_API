@@ -1,6 +1,6 @@
 package negative;
 
-import client.AuthEndpoint;
+import endpoints.AuthEndpoint;
 import org.testng.annotations.Test;
 
 public class CreateIssueWithoutAuthTest {

@@ -1,4 +1,4 @@
-package client;
+package endpoints;
 
 import base.BaseTest;
 import io.restassured.specification.RequestSpecification;

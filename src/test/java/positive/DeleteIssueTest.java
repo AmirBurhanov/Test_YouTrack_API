@@ -1,7 +1,7 @@
 package positive;
 
-import client.IssueDeleteEndpoint;
-import client.IssueTestDataHelper;
+import endpoints.IssueDeleteEndpoint;
+import endpoints.IssueTestDataHelper;
 import org.testng.annotations.Test;
 
 public class DeleteIssueTest {

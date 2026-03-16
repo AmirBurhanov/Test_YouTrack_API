@@ -1,6 +1,6 @@
 package negative;
 
-import client.IssueNegativeEndpoint;
+import endpoints.IssueNegativeEndpoint;
 import org.testng.annotations.Test;
 
 public class DeleteNonExistentIssueTest {

@@ -1,4 +1,4 @@
-package client;
+package endpoints;
 
 import base.BaseTest;
 import dto.response.IssueResponse;

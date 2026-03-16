@@ -1,6 +1,6 @@
 package positive;
 
-import client.IssuePostEndpoint;
+import endpoints.IssuePostEndpoint;
 import org.testng.annotations.Test;
 
 public class CreateIssueWithSpecialCharsTest {

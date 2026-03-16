@@ -1,6 +1,6 @@
 package positive;
 
-import client.IssueGetEndpoint;
+import endpoints.IssueGetEndpoint;
 import org.testng.annotations.Test;
 
 public class FilterIssuesTest {

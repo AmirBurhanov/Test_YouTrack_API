@@ -1,7 +1,7 @@
 package negative;
 
-import client.CommentEndpoint;
-import client.IssueTestDataHelper;
+import endpoints.CommentEndpoint;
+import endpoints.IssueTestDataHelper;
 import org.testng.annotations.Test;
 
 public class EmptyCommentAdd {
