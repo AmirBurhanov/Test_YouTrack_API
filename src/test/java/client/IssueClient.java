@@ -11,6 +11,7 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import constants.TestConstants;
 import java.util.List;
+import utils.EndpointsConfig;
 
 public class IssueClient extends BaseTest {
 
@@ -23,7 +24,7 @@ public class IssueClient extends BaseTest {
         .queryParam(TestConstants.FIELDS_PARAM, TestConfig.getIssueFields())
         .body(request)
         .when()
-        .post(TestConfig.getIssuesEndpoint())
+        .post(EndpointsConfig.getIssuesEndpoint())
         .then()
         .spec(SpecRespons.created())
         .extract()
@@ -43,7 +44,7 @@ public class IssueClient extends BaseTest {
         .pathParam(TestConstants.FIELDS_PARAM, issueId)
         .queryParam("fields", TestConfig.getIssueFields())
         .when()
-        .get(TestConfig.getIssueByIdEndpoint())
+        .get(EndpointsConfig.getIssueByIdEndpoint())
         .then()
         .spec(SpecRespons.success())
         .extract()
@@ -59,7 +60,7 @@ public class IssueClient extends BaseTest {
         .queryParam(TestConstants.QUERY_PARAM, searchQuery)
         .queryParam(TestConstants.FIELDS_PARAM, TestConfig.getIssueFieldsSearch())
         .when()
-        .get(TestConfig.getIssuesEndpoint())
+        .get(EndpointsConfig.getIssuesEndpoint())
         .then()
         .spec(SpecRespons.success())
         .extract()
@@ -77,7 +78,7 @@ public class IssueClient extends BaseTest {
         .spec(SPEC)
         .body(request)
         .when()
-        .post(TestConfig.getIssuesEndpoint())
+        .post(EndpointsConfig.getIssuesEndpoint())
         .then()
         .spec(SpecRespons.badRequest());
 
@@ -95,7 +96,7 @@ public class IssueClient extends BaseTest {
         .spec(SPEC)
         .body(request)
         .when()
-        .post(TestConfig.getIssuesEndpoint())
+        .post(EndpointsConfig.getIssuesEndpoint())
         .then()
         .spec(SpecRespons.badRequest());
 
@@ -109,7 +110,7 @@ public class IssueClient extends BaseTest {
         .spec(UNAUTHORIZED_SPEC)
         .body(request)
         .when()
-        .post(TestConfig.getIssuesEndpoint())
+        .post(EndpointsConfig.getIssuesEndpoint())
         .then()
         .spec(SpecRespons.unauthorized());
 
@@ -122,7 +123,7 @@ public class IssueClient extends BaseTest {
         .spec(SPEC)
         .pathParam(TestConstants.ID_PARAM, INVALID_ISSUE_ID)
         .when()
-        .get(TestConfig.getIssueByIdEndpoint())
+        .get(EndpointsConfig.getIssueByIdEndpoint())
         .then()
         .spec(SpecRespons.notFound());
 
@@ -138,7 +139,7 @@ public class IssueClient extends BaseTest {
         .body(new CommentRequest(""))
         .pathParam(TestConstants.ID_PARAM, issueId)
         .when()
-        .post(TestConfig.getIssueCommentsEndpoint())
+        .post(EndpointsConfig.getIssueCommentsEndpoint())
         .then()
         .spec(SpecRespons.badRequest());
 
@@ -157,7 +158,7 @@ public class IssueClient extends BaseTest {
         .body(request)
         .queryParam(TestConstants.FIELDS_PARAM, TestConstants.ID_PARAM)
         .when()
-        .post(TestConfig.getIssuesEndpoint())
+        .post(EndpointsConfig.getIssuesEndpoint())
         .then()
         .spec(SpecRespons.created())
         .extract()
@@ -170,7 +171,7 @@ public class IssueClient extends BaseTest {
         .spec(SPEC)
         .pathParam(TestConstants.ID_PARAM, issueId)
         .when()
-        .delete(TestConfig.getIssueByIdEndpoint())
+        .delete(EndpointsConfig.getIssueByIdEndpoint())
         .then()
         .statusCode(200);
 
@@ -183,7 +184,7 @@ public class IssueClient extends BaseTest {
         .spec(SPEC)
         .pathParam(TestConstants.ID_PARAM, INVALID_ISSUE_ID)
         .when()
-        .delete(TestConfig.getIssueByIdEndpoint())
+        .delete(EndpointsConfig.getIssueByIdEndpoint())
         .then()
         .statusCode(404);
 
@@ -196,7 +197,7 @@ public class IssueClient extends BaseTest {
         .spec(SPEC)
         .queryParam(TestConstants.FIELDS_PARAM, TestConfig.getIssueFieldsSearch())
         .when()
-        .get(TestConfig.getIssuesEndpoint())
+        .get(EndpointsConfig.getIssuesEndpoint())
         .then()
         .spec(SpecRespons.success())
         .extract()
