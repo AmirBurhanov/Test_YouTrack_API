@@ -1,6 +1,6 @@
 package positive;
 
-import client.IssueClient;
+import client.IssuePostEndpoint;
 import org.testng.annotations.Test;
 
 public class CreateIssueWithSpecialCharsTest {
@@ -10,6 +10,6 @@ public class CreateIssueWithSpecialCharsTest {
     String specialChars = "Описание с спецсимволами: !@#$%^&*()_+{}[]|\\:;\"'<>?,./";
     String summary = "Задача !@#$%^&*()";
 
-    IssueClient.createIssue(summary, specialChars);
+    IssuePostEndpoint.createIssue(summary, specialChars);
   }
 }

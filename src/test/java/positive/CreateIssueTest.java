@@ -1,12 +1,12 @@
 package positive;
 
-import client.IssueClient;
+import client.IssuePostEndpoint;
 import org.testng.annotations.Test;
 
 public class CreateIssueTest {
 
-  @Test(description = "Создание задачи с минимальными полями")
+  @Test(description = "Создание задачи")
   public void createIssueSuccessfully() {
-    IssueClient.createIssue("Test summary", "Test description");
+    IssuePostEndpoint.createIssue("Test summary", "Test description");
   }
 }
