@@ -17,11 +17,8 @@ public class EndpointsConfig {
   private static void loadEndpoints() {
     try (FileInputStream fis = new FileInputStream(ENDPOINTS_FILE)) {
       endpoints.load(fis);
-      Reporter.log("Эндпоинты загружены из " + ENDPOINTS_FILE, true);
     } catch (IOException e) {
-      String errorMsg = "Ошибка загрузки эндпоинтов: " + e.getMessage();
-      Reporter.log(errorMsg, true);
-      throw new RuntimeException(errorMsg, e);
+      throw new RuntimeException(e);
     }
   }
 
@@ -41,7 +38,6 @@ public class EndpointsConfig {
     return endpoints.getProperty("projects", "/projects");
   }
 
-  // Удобные методы с подстановкой ID
   public static String getIssueByIdEndpoint(String issueId) {
     return getIssueByIdEndpoint().replace("{id}", issueId);
   }
