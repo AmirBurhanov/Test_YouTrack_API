@@ -5,7 +5,6 @@ import specs.SpecRequest;
 import utils.TestConfig;
 
 public class BaseTest {
-
   protected static final String PROJECT_ID = TestConfig.getProjectId();
   protected static final String INVALID_PROJECT_ID = "non-existent-id";
   protected static final String INVALID_ISSUE_ID = "0-0";
